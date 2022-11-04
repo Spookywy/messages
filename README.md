@@ -10,9 +10,9 @@ Activate the virtual environment
 
 ```source venv/bin/activate```
 
-Install Django
+Install requirements
 
-```pip install django```
+```pip install -r requirements```
 
 Apply migrations
 
