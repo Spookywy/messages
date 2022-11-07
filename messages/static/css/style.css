@@ -6,17 +6,58 @@ body {
 .header {
     background-color: black;
     color: white;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
     display: flex;
     align-items: center;
 }
 
 #app-title {
     margin-right: auto;
+    font-weight: normal;
+    font-size: 30;
 }
 
-.link {
+.button {
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin: 2px;
     text-decoration: inherit;
+}
+
+.app-title-button {
     color: white;
+}
+
+.primary-button {
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: #333333;
+}
+
+.secondary-button {
+    background-color: white;
+    color: black;
+}
+
+.secondary-button:hover {
+    background-color: #E2E2E2;
+}
+
+.form-control {
+    background-color: #E2E2E2;
+    padding: 15px;
+    border-radius: 10px;
+    border: 0px;
+    height: 50px;
+    font-size: 16px;
+    width: 400px;
+    display: block;
+    margin: 5px 0px;
+}
+
+.form-control:focus {
+    box-shadow: 0px 0px 0px 2px black;
 }

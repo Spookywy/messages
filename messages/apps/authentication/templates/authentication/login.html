@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <p>{{ message }}</p>
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type="submit">Login</button>
+    <link rel="stylesheet" href="{% static 'authentication/css/style.css' %}">
+    <form method="post" id="login-form">
+        <div id="login-panel">
+            <p id="login-title">With Messages, stay connected to those you love.</p>
+            {{ form.username }}
+            {{ form.password }}
+            <button type="submit" class="submit-button">Login</button>
+            {% csrf_token %}
+            {{ form.username.errors }}
+            {{ form.password.errors }}
+            {{ form.non_field_errors }}
+            <p>Don't have an account yet? <a id="create-account-link" href="{% url 'signup' %}">Create one</a></p>
+        </div>
     </form>
-    <p>You don't already have an account ? <a href="{% url 'signup' %}">Signup</a></p>
 {% endblock content %}
