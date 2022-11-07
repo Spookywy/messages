@@ -16,7 +16,7 @@ body {
     margin-right: auto;
 }
 
-#logout-button {
+.link {
     text-decoration: inherit;
     color: white;
 }

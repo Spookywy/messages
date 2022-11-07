@@ -6,9 +6,9 @@
     </head>
     <body>
         <div class="header">
-            <h1 id="app-title">Messages</h1>
+            <h1 id="app-title"><a class="link" href="{% url 'home' %}">Messages</a></h1>
             {% if user.is_authenticated %}
-                <a id="logout-button" href="{% url 'logout' %}">Logout</a>
+                <a class="link" href="{% url 'logout' %}">Logout</a>
             {% endif %}
         </div>
         {% block content %}{% endblock content %}
