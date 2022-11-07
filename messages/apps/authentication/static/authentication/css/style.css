@@ -1,15 +1,15 @@
-#login-form {
+.auth-form {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80%;
 }
 
-#login-panel {
-    width: 400px;
+.auth-panel {
+    width: 405px;
 }
 
-#login-title {
+.auth-title {
     font-size: 22px;
 }
 
@@ -30,8 +30,12 @@
     background-color: #333333;
 }
 
-#create-account-link {
+.auth-link {
     text-decoration: inherit;
     font-weight: bold;
     color: black;
+}
+
+.error-message {
+    color: red;
 }
