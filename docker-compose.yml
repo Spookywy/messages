@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: messages-web-image
+    container_name: messages-web-container
+    ports:
+      - "8000:8000"
+  redis:
+    image: redis
+    container_name: messages-redis-container
+    ports:
+      - "6379:6379"
