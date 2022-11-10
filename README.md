@@ -1,6 +1,12 @@
 # Messages
 
-## Installation
+## Installation using Docker
+
+```docker-compose build```
+
+```docker-compose up```
+
+## Installation without Docker
 
 Create a virtual environment
 
@@ -17,3 +23,7 @@ Install requirements
 Apply migrations
 
 ```python3 manage.py migrate```
+
+Start a Redis server (required by Django channels)
+
+```docker run -p 6379:6379 -d redis```
