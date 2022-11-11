@@ -1,0 +1,19 @@
+.main-container {
+    margin: 20px;
+}
+
+.secondary-container {
+    margin-top: 30px;
+}
+
+.settings-button {
+    background-color: black;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-decoration: inherit;
+}
+
+.settings-button:hover {
+    background-color: #333333;
+}

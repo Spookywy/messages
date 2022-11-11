@@ -7,9 +7,7 @@ WORKDIR /usr/src/app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY messages .
-
-WORKDIR /usr/src/app
+COPY messages ./messages/
 
 EXPOSE 8000
 

@@ -1,5 +1,7 @@
 # Messages
 
+Messages is a small messaging service.
+
 ## Installation using Docker
 
 ```docker-compose build```
