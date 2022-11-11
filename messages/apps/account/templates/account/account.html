@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <h1>Account</h1>
+    <link rel="stylesheet" href="{% static 'account/css/style.css' %}">
+    <div class="main-container">
+        <h1>Account</h1>
+        <p>You are logged in as <b>{{user.username}}</b>.</p>
+        <div class="secondary-container">
+            <p><a class="settings-button" href="{% url 'change_password' %}">Change password</a></p>
+        </div>
+    </div>
 {% endblock content %}
