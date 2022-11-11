@@ -8,6 +8,8 @@ services:
     container_name: messages-web-container
     ports:
       - "8000:8000"
+    volumes:
+      - "./messages:/usr/src/app/messages"
   redis:
     image: redis
     container_name: messages-redis-container
