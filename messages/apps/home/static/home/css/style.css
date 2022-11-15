@@ -25,6 +25,11 @@
     margin: 2px 0px;
 }
 
+.info-message {
+    margin: 2px 0px;
+    font-style: italic;
+}
+
 #chat-message-input {
     width: 100%;
     resize: none;

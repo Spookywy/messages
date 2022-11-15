@@ -10,6 +10,15 @@ class ChatConsumer(WebsocketConsumer):
         # Join group
         async_to_sync(self.channel_layer.group_add)(self.group_name, self.channel_name)
 
+        # Tell other users a new one joined the channel
+        async_to_sync(self.channel_layer.group_send)(
+            self.group_name,
+            {
+                "type": "chat_info",
+                "info": "{} joined the channel.".format(self.scope["user"].username),
+            },
+        )
+
         self.accept()
 
     def disconnect(self, close_code):
@@ -40,3 +49,9 @@ class ChatConsumer(WebsocketConsumer):
         self.send(
             text_data=json.dumps({"message_sender": message_sender, "message": message})
         )
+
+    def chat_info(self, event):
+        info = event["info"]
+
+        # Send message to WebSocket
+        self.send(text_data=json.dumps({"info": info}))

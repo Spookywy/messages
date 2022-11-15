@@ -8,27 +8,45 @@ chatSocket.onmessage = function(e) {
   const data = JSON.parse(e.data);
   const chatLog = document.querySelector('#chat-log');
 
+  var containerToAdd;
+
+  if(data.info) {
+    containerToAdd = createInfoMessageContainer(data.info)
+  } else {
+    containerToAdd = createMessageContainer(data.message_sender, data.message)
+  }
+
+  chatLog.appendChild(containerToAdd);
+  chatLog.scrollTop = chatLog.scrollHeight;
+};
+
+function createInfoMessageContainer(info) {
+  infoContainer = document.createElement('p');
+  infoContainer.innerText = info;
+  infoContainer.classList.add('info-message');
+
+  return infoContainer;
+}
+
+function createMessageContainer(messageSender, message) {
   // Create a message container
   const messageContainer = document.createElement('div');
   messageContainer.classList.add('message-container');
 
-  // Create and add the sender of the message to the container
-  messageSender = document.createElement('p');
-  messageSender.innerText = `${data.message_sender}: `;
-  messageSender.classList.add('message-sender');
-  messageContainer.appendChild(messageSender);
+  // Add the sender of the message
+  messageSenderContainer = document.createElement('p');
+  messageSenderContainer.innerText = messageSender + ": ";
+  messageSenderContainer.classList.add('message-sender');
+  messageContainer.appendChild(messageSenderContainer);
 
-  // Create and add the content of the message to the container
-  messageContent = document.createElement('p');
-  messageContent.classList.add('message-content');
-  messageContent.innerText = data.message;
-  messageContainer.appendChild(messageContent);
+  // Add the content of the message
+  messageContentContainer = document.createElement('p');
+  messageContentContainer.classList.add('message-content');
+  messageContentContainer.innerText = message;
+  messageContainer.appendChild(messageContentContainer);
 
-  // Add the message container to the list of messages
-  chatLog.appendChild(messageContainer);
-
-  chatLog.scrollTop = chatLog.scrollHeight;
-};
+  return messageContainer;
+}
 
 chatSocket.onclose = function(e) {
   console.error('Chat socket closed unexpectedly');
