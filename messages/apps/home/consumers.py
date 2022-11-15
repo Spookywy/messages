@@ -23,6 +23,14 @@ class ChatConsumer(WebsocketConsumer):
 
     def disconnect(self, close_code):
         # Leave group
+        async_to_sync(self.channel_layer.group_send)(
+            self.group_name,
+            {
+                "type": "chat_info",
+                "info": "{} left the channel.".format(self.scope["user"].username),
+            },
+        )
+
         async_to_sync(self.channel_layer.group_discard)(
             self.group_name, self.channel_name
         )
