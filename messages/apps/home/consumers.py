@@ -24,11 +24,19 @@ class ChatConsumer(WebsocketConsumer):
 
         # Send message to group
         async_to_sync(self.channel_layer.group_send)(
-            self.group_name, {"type": "chat_message", "message": message}
+            self.group_name,
+            {
+                "type": "chat_message",
+                "message": message,
+                "message_sender": self.scope["user"].username,
+            },
         )
 
     def chat_message(self, event):
         message = event["message"]
+        message_sender = event["message_sender"]
 
         # Send message to WebSocket
-        self.send(text_data=json.dumps({"message": message}))
+        self.send(
+            text_data=json.dumps({"message_sender": message_sender, "message": message})
+        )

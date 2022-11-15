@@ -6,8 +6,27 @@ const chatSocket = new WebSocket(
 
 chatSocket.onmessage = function(e) {
   const data = JSON.parse(e.data);
-  const chatLog = document.querySelector('#chat-log')
-  chatLog.value += (data.message + '\n');
+  const chatLog = document.querySelector('#chat-log');
+
+  // Create a message container
+  const messageContainer = document.createElement('div');
+  messageContainer.classList.add('message-container');
+
+  // Create and add the sender of the message to the container
+  messageSender = document.createElement('p');
+  messageSender.innerText = `${data.message_sender}: `;
+  messageSender.classList.add('message-sender');
+  messageContainer.appendChild(messageSender);
+
+  // Create and add the content of the message to the container
+  messageContent = document.createElement('p');
+  messageContent.classList.add('message-content');
+  messageContent.innerText = data.message;
+  messageContainer.appendChild(messageContent);
+
+  // Add the message container to the list of messages
+  chatLog.appendChild(messageContainer);
+
   chatLog.scrollTop = chatLog.scrollHeight;
 };
 

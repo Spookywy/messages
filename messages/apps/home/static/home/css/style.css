@@ -3,22 +3,32 @@
 }
 
 .channel-title {
-    font-weight: bold;
-    font-size: 17px;
-}
-
-textarea {
-    width: 100%;
-    resize: none;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 #chat-log {
     height: 73%;
-    border: none;
+    overflow: scroll;
+}
+
+.message-container {
+    display: flex;
+}
+
+.message-sender {
+    white-space: pre-wrap;
+    font-weight: bold;
+    margin: 2px 0px;
+}
+
+.message-content {
+    margin: 2px 0px;
 }
 
 #chat-message-input {
+    width: 100%;
+    resize: none;
+    font-size: 15px;
     padding: 10px;
     border: 2px solid black;
     border-radius: 4px;
