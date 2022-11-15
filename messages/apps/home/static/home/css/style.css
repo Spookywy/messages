@@ -1,0 +1,40 @@
+#home-main-container {
+    margin: 20px;
+}
+
+.channel-title {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+    font-size: 15px;
+}
+
+#chat-log {
+    height: 73%;
+    border: none;
+}
+
+#chat-message-input {
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+}
+
+.chat-message-container {
+    display: flex;
+}
+
+.icon-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+}
+
+.icon-button:hover {
+    background: #E2E2E2;
+}

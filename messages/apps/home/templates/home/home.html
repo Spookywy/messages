@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
     <script src="{% static 'home/js/index.js' %}" defer></script>
-    <h1>Home</h1>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
+    <div id="home-main-container">
+        <p class="channel-title">General channel:</p>
+        <textarea id="chat-log" readonly="true"></textarea>
+        <div class="chat-message-container">
+            <textarea id="chat-message-input"></textarea>
+            <button id="chat-message-submit" class="icon-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path d="M5.833 32.083V7.917L34.5 20Zm2.084-3.208L29.083 20 7.917 11.042v6.75L17 20l-9.083 2.167Zm0 0V11.042v11.125Z"/></svg>
+            </button>
+        </div>
+    </div>
 {% endblock content %}
