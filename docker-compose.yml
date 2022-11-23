@@ -13,8 +13,21 @@ services:
       - "./messages:/usr/src/app/messages"
     stdin_open: true
     tty: true
+    depends_on:
+      - db
   redis:
-    image: redis
+    image: redis:7
     container_name: messages-redis-container
     ports:
       - "6379:6379"
+  db:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    volumes:
+      - "db_data:/var/lib/postgresql/data/"
+    environment:
+      - "POSTGRES_PASSWORD=a-strong-password"
+
+volumes:
+  db_data:
