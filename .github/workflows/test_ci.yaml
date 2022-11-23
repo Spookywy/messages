@@ -5,8 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - run: pip install -r requirements.txt
-      - run: python messages/manage.py test apps
+      - run: docker-compose up -d
+      - run: docker exec messages-web-container python messages/manage.py test apps
