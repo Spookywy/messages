@@ -1,5 +1,9 @@
 FROM python:3
 
+RUN adduser --disabled-password app-user
+
+USER app-user
+
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /usr/src/app
