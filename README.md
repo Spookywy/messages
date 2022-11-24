@@ -29,3 +29,5 @@ Apply migrations
 Start a Redis server (required by Django channels)
 
 ```docker run -p 6379:6379 -d redis```
+
+PostgreSQL is needed to run the project
