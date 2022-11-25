@@ -7,10 +7,19 @@ services:
     image: messages-web-image
     container_name: messages-web-container
     ports:
-      - "8000:8000"
-      - "4444:4444"
+      - 8000:8000
+      - 4444:4444
     volumes:
-      - "./messages:/usr/src/app/messages"
+      - ./messages:/usr/src/app/messages
+    environment:
+      - SECRET_KEY=this-is-a-dev-secret-key
+      - DEBUG=${DEBUG}
+      - DB_HOST=db
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
     stdin_open: true
     tty: true
     depends_on:
@@ -19,15 +28,17 @@ services:
     image: redis:7
     container_name: messages-redis-container
     ports:
-      - "6379:6379"
+      - 6379:6379
   db:
     image: postgres:15
     ports:
-      - "5432:5432"
+      - 5432:5432
     volumes:
-      - "db_data:/var/lib/postgresql/data/"
+      - db_data:/var/lib/postgresql/data/
     environment:
-      - "POSTGRES_PASSWORD=a-strong-password"
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
 
 volumes:
   db_data:
