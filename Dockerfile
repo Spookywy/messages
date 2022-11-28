@@ -31,9 +31,6 @@ WORKDIR /usr/src/app/messages/
 
 EXPOSE 8000
 
-COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
-
 USER app-user
 
 CMD ["run.sh"]
