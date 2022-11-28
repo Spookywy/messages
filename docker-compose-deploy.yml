@@ -4,15 +4,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    entrypoint: ./entrypoint.sh
+    restart: always
     image: messages-web-image
     container_name: messages-web-container
-    ports:
-      - 8000:8000
-      - 4444:4444
     volumes:
-      - ./messages:/usr/src/app/messages
-      - ./data/web:/usr/src/vol/web
+      - static-data:/usr/src/vol/web
     environment:
       - DEBUG=${DEBUG}
       - DB_HOST=db
@@ -21,25 +17,34 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - SECRET_KEY=${SECRET_KEY}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
-    stdin_open: true
-    tty: true
     depends_on:
       - db
   redis:
     image: redis:7
+    restart: always
     container_name: messages-redis-container
     ports:
       - 6379:6379
   db:
     image: postgres:15
-    ports:
-      - 5432:5432
+    restart: always
     volumes:
       - db_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
+  proxy:
+    build:
+      context: ./proxy
+    restart: always
+    depends_on:
+      - web
+    ports:
+      - 80:8000
+    volumes:
+      - static-data:/vol/static
 
 volumes:
+  static-data:
   db_data:

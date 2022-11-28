@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 python messages/manage.py wait_for_db
 python messages/manage.py migrate --no-input
