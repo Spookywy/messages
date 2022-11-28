@@ -15,6 +15,11 @@ RUN apk del .tmp-build-deps
 
 RUN adduser --disabled-password app-user
 
+RUN mkdir -p /usr/src/vol/web/static && \
+	mkdir -p /usr/src/vol/web/media && \
+	chown -R app-user:app-user /usr/src/vol && \
+	chmod -R 755 /usr/src/vol
+
 USER app-user
 
 COPY messages ./messages/

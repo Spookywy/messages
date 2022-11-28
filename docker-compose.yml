@@ -11,6 +11,7 @@ services:
       - 4444:4444
     volumes:
       - ./messages:/usr/src/app/messages
+      - ./data/web:/usr/src/vol/web
     environment:
       - SECRET_KEY=this-is-a-dev-secret-key
       - DEBUG=${DEBUG}
