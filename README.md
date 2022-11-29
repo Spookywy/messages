@@ -1,6 +1,12 @@
 # Messages
 
-Messages is a small messaging service.
+Messages is a small messaging application.
+
+## Deployment
+
+```docker-compose -f docker-compose-deploy.yml```
+
+The project was deployed on a t2.micro ec2 instance. (AWS)
 
 ## Installation using Docker
 
